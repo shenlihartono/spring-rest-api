@@ -24,10 +24,17 @@ public class TransactionController {
 	}
 
 	@GetMapping("/transactions")
-	public ResponseEntity<?> createTransaction(@RequestParam("start_date") String startDate,
-	                                           @RequestParam("end_date") String endDate) {
+	public ResponseEntity<?> getTransaction(@RequestParam("start_date") String startDate,
+	                                        @RequestParam("end_date") String endDate) {
 		List<ViewTransactionDTO> dto = transactionService.viewTransaction(startDate, endDate);
 
+		return ResponseEntity.ok(dto);
+	}
+
+	@GetMapping("/transactions/users/{userId}")
+	public ResponseEntity<?> getUserTransactions(@PathVariable int userId) {
+		List<ViewTransactionDTO> dto = transactionService.viewTransaction(userId);
+		
 		return ResponseEntity.ok(dto);
 	}
 }

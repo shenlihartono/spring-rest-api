@@ -48,6 +48,14 @@ public class TransactionServiceImpl implements TransactionService {
 		return transactionMapper.toDTO(transactions);
 	}
 
+	@Override
+	public List<ViewTransactionDTO> viewTransaction(int userId) {
+		User user = userService.findUser(userId);
+		
+		List<Transaction> transactions = transactionRepository.findByUserOrderByIdDesc(user);
+		return transactionMapper.toDTO(transactions);
+	}
+
 	private void validateDate(LocalDate from, LocalDate to) {
 		if (to.isBefore(from)) {
 			throw new InvalidTransactionDateException();

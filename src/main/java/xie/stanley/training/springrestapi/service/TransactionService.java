@@ -9,4 +9,6 @@ public interface TransactionService {
 	void createTransaction(CreateTransactionDTO dto);
 
 	List<ViewTransactionDTO> viewTransaction(String startDate, String endDate);
+
+	List<ViewTransactionDTO> viewTransaction(int userId);
 }
