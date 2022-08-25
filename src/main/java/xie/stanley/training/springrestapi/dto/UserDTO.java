@@ -25,6 +25,6 @@ public class UserDTO {
 	@NotNull(message = "alamat tidak boleh kosong")
 	private String address;
 
-	@NotNull(message = "tipe user tidak boleh kosong")
+	@NotNull(message = "tipe user tidak boleh kosong dan hanya boleh value: [LENDER, BORROWER]")
 	private UserType userType;
 }

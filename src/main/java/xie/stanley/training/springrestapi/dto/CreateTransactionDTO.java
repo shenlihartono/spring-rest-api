@@ -21,7 +21,7 @@ public class CreateTransactionDTO {
 	@Min(value = 1, message = "jumlah uang tidak boleh kosong")
 	private long amount;
 
-	@NotNull(message = "tipe transaksi tidak boleh kosong")
+	@NotNull(message = "tipe transaksi tidak boleh kosong dan hanya boleh di antara value berikut: [LEND, WITHDRAW, BORROW, RETURN]")
 	private TransactionType transactionType;
 
 	@Min(value = 1, message = "user id tidak boleh kosong")
