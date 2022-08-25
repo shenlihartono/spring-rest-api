@@ -14,7 +14,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 	private final UserRepository userRepository;
 	private final UserMapper userMapper;
-	
+
 	@Override
 	public List<UserDTO> findAllUser() {
 		List<User> users = userRepository.findAll();
@@ -23,6 +23,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void addUser(UserDTO dto) {
-
+		User user = userMapper.toModel(dto);
+		userRepository.save(user);
 	}
+
 }

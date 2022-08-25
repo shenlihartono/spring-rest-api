@@ -3,28 +3,25 @@ package xie.stanley.training.springrestapi.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
-public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	private LocalDateTime createdDate;
-	
+public class User extends BaseEntity {
+
 	private String name;
-	
-	private LocalDateTime birthDate;
-	
+
+	private LocalDate birthDate;
+
 	private String address;
 
 	@Enumerated(EnumType.STRING)
 	private UserType userType;
-	
+
 }
