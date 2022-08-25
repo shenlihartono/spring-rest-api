@@ -17,8 +17,8 @@ public class UserDTO {
 	@Size(min = 3, message = "nama tidak boleh kurang dari 3 huruf")
 	private String name;
 
-	@JsonFormat(pattern = "dd/MM/yyyy")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotNull(message = "tanggal lahir tidak boleh kosong")
 	private LocalDate birthDate;
 
