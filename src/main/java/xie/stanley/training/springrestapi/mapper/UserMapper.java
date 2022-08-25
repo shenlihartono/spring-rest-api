@@ -6,7 +6,7 @@ import xie.stanley.training.springrestapi.model.User;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserMapper {
 	User toModel(UserDTO dto);
 
