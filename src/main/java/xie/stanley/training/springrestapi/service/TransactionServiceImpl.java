@@ -39,7 +39,6 @@ public class TransactionServiceImpl implements TransactionService {
 		validateDate(from, to);
 
 		List<Transaction> transactions = transactionRepository.findByTransactionDateBetween(from, to);
-
 		return transactionMapper.toDTO(transactions);
 	}
 
