@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -13,4 +14,9 @@ import java.util.List;
 @Setter
 public class ApiError {
 	private List<String> errors;
+	
+	public ApiError(String error) {
+		errors = new ArrayList<>();
+		errors.add(error);
+	}
 }

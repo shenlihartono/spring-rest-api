@@ -25,4 +25,9 @@ public class MyExceptionHandler {
 		return new ResponseEntity<>(new ApiError(message), HttpStatus.BAD_REQUEST);
 	}
 
+	@ExceptionHandler({UserNotFoundException.class, InvalidTransactionDateException.class})
+	public ResponseEntity<?> handleUserNotFound(Exception ex) {
+		return new ResponseEntity<>(new ApiError(ex.getMessage()), HttpStatus.BAD_REQUEST);
+	}
+
 }
