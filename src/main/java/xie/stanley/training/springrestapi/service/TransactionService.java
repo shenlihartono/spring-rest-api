@@ -1,7 +1,12 @@
 package xie.stanley.training.springrestapi.service;
 
-import xie.stanley.training.springrestapi.dto.TransactionDTO;
+import xie.stanley.training.springrestapi.dto.CreateTransactionDTO;
+import xie.stanley.training.springrestapi.dto.ViewTransactionDTO;
+
+import java.util.List;
 
 public interface TransactionService {
-	void createTransaction(TransactionDTO dto);
+	void createTransaction(CreateTransactionDTO dto);
+
+	List<ViewTransactionDTO> viewTransaction(String startDate, String endDate);
 }

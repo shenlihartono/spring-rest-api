@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class TransactionDTO {
+public class CreateTransactionDTO {
 	@Min(value = 1, message = "jumlah uang tidak boleh kosong")
 	private long amount;
 
