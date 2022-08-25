@@ -12,7 +12,6 @@ import xie.stanley.training.springrestapi.repository.TransactionRepository;
 import xie.stanley.training.springrestapi.util.DateUtil;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -27,9 +26,7 @@ public class TransactionServiceImpl implements TransactionService {
 	public void createTransaction(CreateTransactionDTO dto) {
 		User user = userService.findUser(dto.getUserId());
 
-		Transaction transaction = new Transaction();
-		transaction.setAmount(dto.getAmount());
-		transaction.setTransactionType(dto.getTransactionType());
+		Transaction transaction = transactionMapper.toModel(dto);
 		transaction.setUser(user);
 		transactionRepository.save(transaction);
 	}
@@ -41,9 +38,7 @@ public class TransactionServiceImpl implements TransactionService {
 
 		validateDate(from, to);
 
-		List<Transaction> transactions = transactionRepository.findByCreatedDateBetween(
-			getTransactionStartDate(from),
-			getTransactionEndDate(to));
+		List<Transaction> transactions = transactionRepository.findByTransactionDateBetween(from, to);
 
 		return transactionMapper.toDTO(transactions);
 	}
@@ -60,14 +55,6 @@ public class TransactionServiceImpl implements TransactionService {
 		if (to.isBefore(from)) {
 			throw new InvalidTransactionDateException();
 		}
-	}
-
-	private LocalDateTime getTransactionStartDate(LocalDate from) {
-		return from.atStartOfDay();
-	}
-
-	private LocalDateTime getTransactionEndDate(LocalDate to) {
-		return to.plusDays(1).atStartOfDay();
 	}
 
 }

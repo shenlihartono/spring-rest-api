@@ -4,13 +4,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "transactions")
 @Getter
 @Setter
-public class Transaction extends BaseEntity {
+public class Transaction {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	private LocalDate transactionDate; 
 	
 	private long amount;
 
