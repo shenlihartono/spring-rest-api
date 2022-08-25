@@ -10,12 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "transactions")
 @Getter
 @Setter
-public class Transaction {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-
-	private LocalDateTime createdDate;
+public class Transaction extends BaseEntity {
 	
 	private long amount;
 
